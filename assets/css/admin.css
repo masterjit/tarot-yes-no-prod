@@ -1,0 +1,327 @@
+/**
+ * Admin CSS for Tarot Yes/No Reading
+ */
+
+/* Admin page styling */
+.tynr-admin-page {
+    max-width: 1200px;
+    margin: 20px 0;
+}
+
+/* Back images grid improvements */
+.back-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 25px 0;
+}
+
+.back-image-item {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    background: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.back-image-item:hover {
+    border-color: #0073aa;
+    box-shadow: 0 5px 15px rgba(0, 115, 170, 0.2);
+}
+
+.back-image-item img {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.back-image-item:hover img {
+    transform: scale(1.02);
+}
+
+.image-controls {
+    margin-top: 15px;
+}
+
+.image-controls input[type="text"] {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.image-controls label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.image-controls input[type="checkbox"] {
+    margin: 0;
+}
+
+.remove-image {
+    background: #dc3545 !important;
+    color: white !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    transition: background 0.3s ease;
+}
+
+.remove-image:hover {
+    background: #c82333 !important;
+}
+
+/* Interpretation tabs styling */
+.interpretation-tabs {
+    margin: 25px 0;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-button {
+    padding: 12px 24px;
+    margin-right: 5px;
+    border: 2px solid #ddd;
+    background: #f9f9f9;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    bottom: -2px;
+}
+
+.tab-button:hover {
+    background: #e9ecef;
+    border-color: #0073aa;
+}
+
+.tab-button.active {
+    background: #0073aa;
+    color: white;
+    border-color: #0073aa;
+}
+
+/* Interpretation form styling */
+.interpretation-content {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 0 5px 5px 5px;
+    border: 2px solid #ddd;
+    border-top: none;
+}
+
+.orientation-section {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.interpretation-field {
+    margin-bottom: 20px;
+}
+
+.interpretation-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.interpretation-field textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.interpretation-field textarea:focus {
+    outline: none;
+    border-color: #0073aa;
+    box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.1);
+}
+
+/* Card selector styling */
+.card-selector {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+}
+
+.card-selector label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+#card-select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+}
+
+#card-select:focus {
+    outline: none;
+    border-color: #0073aa;
+    box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.1);
+}
+
+/* Button styling */
+.tynr-admin-btn {
+    background: linear-gradient(45deg, #0073aa, #005a87);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+.tynr-admin-btn:hover {
+    background: linear-gradient(45deg, #005a87, #004a73);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 115, 170, 0.3);
+}
+
+.tynr-admin-btn:active {
+    transform: translateY(0);
+}
+
+/* Settings form styling */
+.form-table th {
+    padding: 20px 10px 20px 0;
+    font-weight: 600;
+    color: #333;
+    width: 200px;
+}
+
+.form-table td {
+    padding: 15px 10px;
+}
+
+.form-table select,
+.form-table input[type="text"] {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-table select:focus,
+.form-table input[type="text"]:focus {
+    outline: none;
+    border-color: #0073aa;
+    box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.1);
+}
+
+/* Status messages */
+.tynr-notice {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    border-left: 4px solid;
+}
+
+.tynr-notice.success {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.tynr-notice.error {
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+.tynr-notice.warning {
+    background: #fff3cd;
+    border-color: #ffc107;
+    color: #856404;
+}
+
+/* Loading states */
+.tynr-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #0073aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .back-images-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .interpretation-tabs {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .tab-button {
+        border-radius: 5px;
+        margin-bottom: 5px;
+        bottom: 0;
+    }
+    
+    .interpretation-content {
+        border-radius: 5px;
+        border: 2px solid #ddd;
+    }
+    
+    .form-table th,
+    .form-table td {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+}
+
+/* Print styles */
+@media print {
+    .tynr-admin-btn,
+    .remove-image {
+        display: none !important;
+    }
+    
+    .back-image-item {
+        break-inside: avoid;
+        border: 1px solid #000;
+    }
+} 

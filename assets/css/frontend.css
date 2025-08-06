@@ -1,0 +1,489 @@
+/**
+ * Frontend CSS for Tarot Yes/No Reading
+ */
+
+/* Main container styles */
+.tynr-reading-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    min-height: 100vh;
+}
+
+.tynr-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tynr-header h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.tynr-header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.back-cards-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.back-cards-container h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #ffd700;
+}
+
+/* Overlapping cards container */
+.overlapping-cards-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    padding: 20px;
+}
+
+.overlapping-cards-stack {
+    position: relative;
+    width: calc(192px + (60px * (var(--num-cards, 3) - 1)));
+    height: 332px;
+    margin: 0 auto;
+}
+
+.overlapping-card-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    cursor: pointer;
+    transform: translateX(0);
+}
+
+.overlapping-card-item:nth-child(1) { transform: translateX(0); }
+.overlapping-card-item:nth-child(2) { transform: translateX(60px); }
+.overlapping-card-item:nth-child(3) { transform: translateX(120px); }
+.overlapping-card-item:nth-child(4) { transform: translateX(180px); }
+.overlapping-card-item:nth-child(5) { transform: translateX(240px); }
+.overlapping-card-item:nth-child(6) { transform: translateX(300px); }
+.overlapping-card-item:nth-child(7) { transform: translateX(360px); }
+.overlapping-card-item:nth-child(8) { transform: translateX(420px); }
+.overlapping-card-item:nth-child(9) { transform: translateX(480px); }
+.overlapping-card-item:nth-child(10) { transform: translateX(540px); }
+
+.overlapping-card-item:hover {
+    transform: translateY(-5px) translateX(var(--original-x, 0));
+    z-index: 1000;
+}
+
+.overlapping-card-item.selected {
+    transform: translateY(-15px) scale(1.05) translateX(var(--original-x, 0));
+    z-index: 1001;
+}
+
+.overlapping-card-item.selected .card-image {
+    box-shadow: 0 0 25px #ffd700;
+    border: 2px solid #ffd700;
+}
+
+.card-image {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.back-card-image {
+    width: 192px;
+    height: 332px;
+    object-fit: cover;
+}
+
+.clickable-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.clickable-card:hover {
+    transform: scale(1.01);
+}
+
+.overlapping-card-item.selected .clickable-card {
+    box-shadow: 0 0 25px #E49658;
+    border: 2px solid #E49658;
+}
+
+.overlapping-card-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.overlapping-card-item.disabled:hover {
+    transform: translateX(var(--original-x, 0));
+    z-index: 1;
+}
+
+/* Selection summary */
+.selection-summary {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+/* Button styles */
+.tynr-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+
+.tynr-btn-primary {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #1a1a2e;
+}
+
+.tynr-btn-primary:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.tynr-btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.tynr-btn-secondary {
+    background: linear-gradient(45deg, #6c757d, #5a6268);
+    color: white;
+}
+
+.tynr-btn-secondary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+}
+
+/* Reading results */
+.reading-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.cards-reading {
+    margin-bottom: 40px;
+}
+
+.reading-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-image-small {
+    width: 192px;
+    height: 332px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.card-details h4 {
+    color: #ffd700;
+    margin-bottom: 5px;
+}
+
+.card-orientation {
+    font-style: italic;
+    color: #ffd700;
+}
+
+.card-answer {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffd700;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.interpretations {
+    margin-top: 20px;
+}
+
+.interpretation-category {
+    margin-bottom: 15px;
+}
+
+.interpretation-category h5 {
+    color: #ffd700;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 5px;
+}
+
+/* Loading styles */
+.tynr-loading {
+    text-align: center;
+    padding: 50px;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 215, 0, 0.3);
+    border-top: 5px solid #ffd700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Reading summary styling */
+.reading-summary {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.summary-stats {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.summary-message {
+    text-align: center;
+    font-style: italic;
+    color: #ffd700;
+}
+
+/* Card flip animations */
+.reading-card {
+    animation: cardReveal 0.8s ease-out;
+}
+
+@keyframes cardReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) rotateY(90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateY(0deg);
+    }
+}
+
+/* Reversed card styling */
+.reading-card.reversed .card-image-small {
+    transform: rotate(180deg);
+}
+
+.reading-card.reversed .card-orientation {
+    color: #ff6b6b;
+}
+
+/* Answer styling */
+.card-answer.yes {
+    color: #4CAF50;
+}
+
+.card-answer.no {
+    color: #f44336;
+}
+
+.card-answer.maybe {
+    color: #ff9800;
+}
+
+/* Button hover effects */
+.tynr-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.tynr-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.tynr-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Phase transitions */
+.tynr-phase {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.tynr-phase.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Accessibility improvements */
+.select-card-btn:focus,
+.tynr-btn:focus {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .overlapping-cards-container {
+        padding: 5px;
+        margin: 15px 0;
+    }
+    
+    .overlapping-cards-stack {
+        width: calc(100px + (30px * (var(--num-cards, 3) - 1)));
+        height: 173px; /* Smaller height for mobile */
+    }
+    
+    .overlapping-card-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .overlapping-card-item:nth-child(1) { transform: translateX(0); }
+    .overlapping-card-item:nth-child(2) { transform: translateX(30px); }
+    .overlapping-card-item:nth-child(3) { transform: translateX(60px); }
+    .overlapping-card-item:nth-child(4) { transform: translateX(90px); }
+    .overlapping-card-item:nth-child(5) { transform: translateX(120px); }
+    .overlapping-card-item:nth-child(6) { transform: translateX(150px); }
+    .overlapping-card-item:nth-child(7) { transform: translateX(180px); }
+    .overlapping-card-item:nth-child(8) { transform: translateX(210px); }
+    .overlapping-card-item:nth-child(9) { transform: translateX(240px); }
+    .overlapping-card-item:nth-child(10) { transform: translateX(270px); }
+    
+    .overlapping-card-item:hover {
+        transform: translateY(-3px) translateX(var(--mobile-x, 0));
+        z-index: 1000;
+    }
+    
+    .overlapping-card-item.selected {
+        transform: translateY(-8px) scale(1.03) translateX(var(--mobile-x, 0));
+        z-index: 1001;
+    }
+    
+    .overlapping-card-item.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    .overlapping-card-item.disabled:hover {
+        transform: translateX(var(--mobile-x, 0));
+        z-index: 1;
+    }
+    
+    .back-card-image {
+        width: 100px !important;
+        height: 173px !important;
+    }
+    
+    .reading-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tynr-reading-container {
+        padding: 10px;
+    }
+    
+    .tynr-header h2 {
+        font-size: 2em;
+    }
+    
+    .back-cards-container h3 {
+        font-size: 1.5em;
+    }
+    
+    .overlapping-cards-stack {
+        width: calc(80px + (25px * (var(--num-cards, 3) - 1)));
+        height: 139px; /* Even smaller for very small screens */
+    }
+    
+    .overlapping-card-item:nth-child(1) { transform: translateX(0); }
+    .overlapping-card-item:nth-child(2) { transform: translateX(25px); }
+    .overlapping-card-item:nth-child(3) { transform: translateX(50px); }
+    .overlapping-card-item:nth-child(4) { transform: translateX(75px); }
+    .overlapping-card-item:nth-child(5) { transform: translateX(100px); }
+    .overlapping-card-item:nth-child(6) { transform: translateX(125px); }
+    .overlapping-card-item:nth-child(7) { transform: translateX(150px); }
+    .overlapping-card-item:nth-child(8) { transform: translateX(175px); }
+    .overlapping-card-item:nth-child(9) { transform: translateX(200px); }
+    .overlapping-card-item:nth-child(10) { transform: translateX(225px); }
+    
+    .overlapping-card-item:hover {
+        transform: translateY(-2px) translateX(var(--mobile-x, 0));
+        z-index: 1000;
+    }
+    
+    .overlapping-card-item.selected {
+        transform: translateY(-6px) scale(1.02) translateX(var(--mobile-x, 0));
+        z-index: 1001;
+    }
+    
+    .back-card-image {
+        width: 80px !important;
+        height: 139px !important;
+    }
+    
+    .card-image-small {
+        width: 60px !important;
+        height: 105px !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .tynr-reading-container {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .tynr-btn,
+    .select-card-btn {
+        display: none !important;
+    }
+    
+    .reading-card {
+        break-inside: avoid;
+        margin-bottom: 20px;
+    }
+} 
