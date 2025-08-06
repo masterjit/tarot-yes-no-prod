@@ -26,7 +26,7 @@
         });
         
         // Get reading button
-        $('#get-reading-btn').on('click', function() {
+        $('#reading-btn').on('click', function() {
             getReading();
         });
         
@@ -65,7 +65,7 @@
         const count = selectedCards.length;
         const maxCards = window.tynrMaxCards || 3; // Use the global variable or default to 3
         
-        console.log('updateSelectionSummary - count:', count, 'maxCards:', maxCards);
+        //console.log('updateSelectionSummary - count:', count, 'maxCards:', maxCards);
         
         $('#selected-count').text(count);
         
@@ -76,16 +76,16 @@
         // Show/hide summary section and button
         if (count > 0) {
             $('.selection-summary').show();
-            $('#get-reading-btn').show(); // Show the button when cards are selected
+            $('#reading-btn').show(); // Show the button when cards are selected
         } else {
             $('.selection-summary').hide();
-            $('#get-reading-btn').hide(); // Hide the button when no cards selected
+            $('#reading-btn').hide(); // Hide the button when no cards selected
         }
         
         // Enable/disable get reading button
-        const getReadingBtn = $('#get-reading-btn');
+        const getReadingBtn = $('#reading-btn');
         const shouldEnable = count === maxCards;
-        console.log('Button should be enabled:', shouldEnable);
+        //console.log('Button should be enabled1:', shouldEnable);
         getReadingBtn.prop('disabled', !shouldEnable);
         
         // Update card disabled states
@@ -102,8 +102,8 @@
     }
     
     function getReading() {
-        console.log('getReading called with selectedCards.length:', selectedCards.length);
-        console.log('window.tynrMaxCards:', window.tynrMaxCards);
+        //console.log('getReading called with selectedCards.length:', selectedCards.length);
+        //console.log('window.tynrMaxCards:', window.tynrMaxCards);
         
         // Double-check that we have the right number of cards
         const maxCards = window.tynrMaxCards || 3;
@@ -124,7 +124,7 @@
             },
             success: function(response) {
                 hideLoading();
-                console.log('AJAX response:', response);
+                //console.log('AJAX response:', response);
                 if (response.success) {
                     currentReading = response.data;
                     displayReading(response.data);
@@ -135,8 +135,8 @@
             },
             error: function(xhr, status, error) {
                 hideLoading();
-                console.log('AJAX error:', status, error);
-                console.log('Response text:', xhr.responseText);
+                //console.log('AJAX error:', status, error);
+                //console.log('Response text:', xhr.responseText);
                 alert('Error getting reading. Please try again.');
             }
         });
