@@ -53,7 +53,7 @@ if (!defined('ABSPATH')) {
         <div class="selection-summary" style="display: none;">
             <h3>Selected Cards: <span id="selected-count">0</span>/<?php echo $num_cards; ?></h3>
             <div id="selected-cards-list"></div>
-            <button type="button" id="get-reading-btn" class="tynr-btn tynr-btn-primary" disabled>
+            <button type="button" id="reading-btn" class="tynr-btn tynr-btn-primary">
                 Get Your Reading
             </button>
         </div>

@@ -26,7 +26,7 @@
         });
         
         // Get reading button
-        $('#get-reading-btn').on('click', function() {
+        $('#reading-btn').on('click', function() {
             getReading();
         });
         
@@ -65,8 +65,6 @@
         const count = selectedCards.length;
         const maxCards = window.tynrMaxCards || 3; // Use the global variable or default to 3
         
-        console.log('updateSelectionSummary - count:', count, 'maxCards:', maxCards);
-        
         $('#selected-count').text(count);
         
         // Update selected cards list - no need to show card names
@@ -85,7 +83,6 @@
         // Enable/disable get reading button
         const getReadingBtn = $('#get-reading-btn');
         const shouldEnable = count === maxCards;
-        console.log('Button should be enabled:', shouldEnable);
         getReadingBtn.prop('disabled', !shouldEnable);
         
         // Update card disabled states
@@ -102,13 +99,9 @@
     }
     
     function getReading() {
-        console.log('getReading called with selectedCards.length:', selectedCards.length);
-        console.log('window.tynrMaxCards:', window.tynrMaxCards);
-        
         // Double-check that we have the right number of cards
         const maxCards = window.tynrMaxCards || 3;
         if (selectedCards.length !== maxCards) {
-            console.log('ERROR: Card count mismatch! selectedCards.length:', selectedCards.length, 'maxCards:', maxCards);
             return;
         }
         
@@ -124,19 +117,15 @@
             },
             success: function(response) {
                 hideLoading();
-                console.log('AJAX response:', response);
                 if (response.success) {
                     currentReading = response.data;
                     displayReading(response.data);
                 } else {
-                    console.log('AJAX returned error:', response);
                     alert('Error getting reading. Please try again.');
                 }
             },
             error: function(xhr, status, error) {
                 hideLoading();
-                console.log('AJAX error:', status, error);
-                console.log('Response text:', xhr.responseText);
                 alert('Error getting reading. Please try again.');
             }
         });

@@ -32,6 +32,20 @@ class Tarot_Yes_No_Activator {
         
 
         
+        // Table for cards
+        $table_cards = $wpdb->prefix . 'tynr_cards';
+        $sql_cards = "CREATE TABLE $table_cards (
+            id int(11) NOT NULL AUTO_INCREMENT,
+            card_name varchar(255) NOT NULL,
+            card_image varchar(500) DEFAULT NULL,
+            card_type enum('major', 'minor') NOT NULL DEFAULT 'major',
+            suit varchar(50) DEFAULT NULL,
+            created_at datetime DEFAULT CURRENT_TIMESTAMP,
+            updated_at datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (id),
+            UNIQUE KEY card_name (card_name)
+        ) $charset_collate;";
+        
         // Table for card interpretations
         $table_interpretations = $wpdb->prefix . 'tynr_interpretations';
         $sql_interpretations = "CREATE TABLE $table_interpretations (
@@ -48,6 +62,7 @@ class Tarot_Yes_No_Activator {
         
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql_settings);
+        dbDelta($sql_cards);
         dbDelta($sql_interpretations);
     }
     
@@ -90,15 +105,17 @@ class Tarot_Yes_No_Activator {
         // Only insert if no interpretations exist yet
         global $wpdb;
         $table_interpretations = $wpdb->prefix . 'tynr_interpretations';
+        $table_cards = $wpdb->prefix . 'tynr_cards';
         
-        $count = $wpdb->get_var("SELECT COUNT(*) FROM $table_interpretations");
+        $interpretations_count = $wpdb->get_var("SELECT COUNT(*) FROM $table_interpretations");
+        $cards_count = $wpdb->get_var("SELECT COUNT(*) FROM $table_cards");
         
-        if ($count == 0) {
-            error_log('TYNR: No existing interpretations found, inserting defaults');
-            $cards_inserted = Tarot_Card_Data::insert_default_interpretations();
-            error_log('TYNR: Inserted default interpretations for ' . $cards_inserted . ' cards');
+        if ($interpretations_count == 0 && $cards_count == 0) {
+            error_log('TYNR: No existing data found, inserting defaults');
+            $cards_inserted = Tarot_Card_Data::insert_default_cards_and_interpretations();
+            error_log('TYNR: Inserted default data for ' . $cards_inserted . ' cards');
         } else {
-            error_log('TYNR: Interpretations already exist, skipping insertion');
+            error_log('TYNR: Data already exists, skipping insertion');
         }
     }
 } 
